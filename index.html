@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docencia Programas en Energías · Uniguajira</title>
+<meta name="description" content="Formatos, tutoriales, calendario académico y enlaces institucionales para docentes de Ingeniería en Energías y Tecnología en Gestión de Energías Renovables – Universidad de La Guajira.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔌</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --surface:#ffffff; --surface-2:#eef3f1;
+  --ink:#16231f; --muted:#5b6b66; --line:#dde3df;
+  --brand:#0f5b4f; --brand-2:#13806e; --accent:#e9821e; --accent-soft:#fdf0e2;
+  --done:#9aa7a2; --now:#e9821e; --next:#13806e;
+  --radius:14px; --shadow:0 1px 2px rgba(16,35,31,.06),0 6px 20px rgba(16,35,31,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1614; --surface:#16201d; --surface-2:#1b2824;
+    --ink:#e8efec; --muted:#9db0a9; --line:#26352f;
+    --brand:#6fd1bd; --brand-2:#4fb9a4; --accent:#f3a050; --accent-soft:#2a2118;
+    --done:#5d6d67; --shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Hero */
+.hero{position:relative;height:300px;background:#7b8e8a url("https://images.unsplash.com/photo-1658242106760-7a5c8f177180?auto=format&fit=crop&w=2000&q=75") center 60%/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,var(--bg) 100%)}
+.head{position:relative;margin-top:-92px;z-index:1}
+.badge{width:76px;height:76px;border-radius:20px;background:var(--surface);display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid var(--line)}
+.badge svg{width:44px;height:44px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(30px,5vw,48px);line-height:1.1;margin:18px 0 10px;letter-spacing:-.01em}
+.programs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
+.programs li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:500;color:var(--brand)}
+.uni{color:var(--muted);font-size:14px;margin:6px 0 0}
+
+nav.jump{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:28px}
+nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+nav.jump a{white-space:nowrap;text-decoration:none;font-size:14px;font-weight:500;color:var(--muted);padding:6px 12px;border-radius:8px}
+nav.jump a:hover{background:var(--surface-2);color:var(--ink)}
+
+/* Layout */
+.grid{display:grid;grid-template-columns:1fr 1.35fr 0.9fr;gap:28px;padding-top:32px;padding-bottom:64px;align-items:start}
+@media (max-width:1000px){.grid{grid-template-columns:1fr 1fr}.col-cal{grid-column:1/-1;order:3}}
+@media (max-width:680px){.grid{grid-template-columns:1fr}}
+section{scroll-margin-top:64px}
+h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:15px;font-weight:600;margin:22px 0 10px;color:var(--brand)}
+
+/* Callout cards */
+.callout{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.callout:hover{transform:translateY(-1px);border-color:var(--brand-2)}
+.callout .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--accent-soft);display:grid;place-items:center;font-size:17px}
+.callout b{display:block;font-weight:600;line-height:1.35}
+.callout small{color:var(--muted);font-size:13px}
+
+/* Video cards */
+.video{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;margin-bottom:10px;box-shadow:var(--shadow)}
+.video:hover{border-color:var(--brand-2)}
+.thumb{flex:none;width:120px;min-height:84px;background:#1b1b1b center/cover;position:relative}
+.thumb::after{content:"";position:absolute;inset:0;margin:auto;width:34px;height:24px;border-radius:7px;background:#e62117 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l8 5-8 5z' fill='white'/%3E%3C/svg%3E") center/18px no-repeat}
+.thumb.playlist{background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+.video div{padding:10px 12px 10px 0}
+.video b{display:block;font-size:14.5px;line-height:1.3}
+.video small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+.empty{color:var(--muted);font-size:14px;font-style:italic;padding:10px 0}
+
+/* Tables */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:8px}
+.tscroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:var(--surface-2);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+tbody tr:last-child td{border-bottom:none}
+td.d{white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.group td{background:var(--surface-2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--brand)}
+tr.done td{color:var(--done)}
+tr.now td{background:var(--accent-soft)}
+tr.now td:first-child{box-shadow:inset 3px 0 0 var(--now)}
+.tag{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1px}
+.tag.now{background:var(--now);color:#fff}
+.tag.next{background:var(--next);color:#fff}
+.tag.done{border:1px solid var(--line);color:var(--done)}
+.legend{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+details{margin-top:18px}
+details summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--brand);list-style:none;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸";transition:transform .15s;display:inline-block}
+details[open] summary::before{transform:rotate(90deg)}
+.note{font-size:12.5px;color:var(--muted);margin:6px 2px 0}
+
+/* Links */
+.links{list-style:none;margin:0;padding:0}
+.links a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brand-2);border-radius:10px;text-decoration:none;font-weight:500;box-shadow:var(--shadow)}
+.links a:hover{border-color:var(--brand-2)}
+.links a span{color:var(--muted);font-size:18px;line-height:1}
+
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+</style>
+</head>
+<body>
+
+<div class="hero" role="img" aria-label="Aerogeneradores al atardecer"></div>
+
+<header class="wrap head">
+  <div class="badge" aria-hidden="true">
+    <svg viewBox="0 0 48 48" fill="none" stroke="#e9821e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 6v10M31 6v10"/>
+      <path d="M11 16h26v8a13 13 0 0 1-26 0z" fill="#e9821e"/>
+      <path d="M24 37v5"/>
+    </svg>
+  </div>
+  <h1>Docencia Programas en Energías</h1>
+  <ul class="programs">
+    <li>Ingeniería en Energías</li>
+    <li>Tecnología en Gestión de Energías Renovables</li>
+  </ul>
+  <p class="uni">Facultad de Ingeniería · Universidad de La Guajira</p>
+</header>
+
+<nav class="jump" aria-label="Secciones">
+  <div class="wrap">
+    <a href="#formatos">Formatos</a>
+    <a href="#tutoriales">Tutoriales</a>
+    <a href="#calendario">Calendario académico</a>
+    <a href="#consejo">Consejo de Facultad</a>
+    <a href="#comite">Comité de Investigación</a>
+    <a href="#enlaces">Enlaces institucionales</a>
+  </div>
+</nav>
+
+<main class="wrap grid">
+
+  <!-- Columna 1 -->
+  <div>
+    <section id="formatos">
+      <h2>Formatos</h2>
+      <a class="callout" href="https://drive.google.com/drive/folders/1M3N_N7RDkiglvs60BeMBjLa5nGl51T8A" target="_blank" rel="noopener">
+        <span class="ic">💡</span>
+        <span><b>Formatos de control de estudiante y desarrollo de clases</b><small>Carpeta en Google Drive</small></span>
+      </a>
+      <a class="callout" href="https://gunig2.uniguajira.edu.co/ords/f?p=136:6" target="_blank" rel="noopener">
+        <span class="ic">💡</span>
+        <span><b>Diapositivas y listados de asistencia actualizados</b><small>Gunig 2</small></span>
+      </a>
+      <a class="callout" href="https://docs.google.com/document/d/1nZ1tDCIRTJw4qQUMcbdROg4WEdG-S-12/edit" target="_blank" rel="noopener">
+        <span class="ic">💡</span>
+        <span><b>Membrete logo Universidad 50 Años</b><small>Documento de Google</small></span>
+      </a>
+    </section>
+
+    <section id="tutoriales">
+      <h3>Videos tutoriales</h3>
+      <a class="video" href="https://youtube.com/playlist?list=PLlWEmWAozJhleoloeyzFc8JFPPNyKk7WI" target="_blank" rel="noopener">
+        <span class="thumb playlist"></span>
+        <div><b>Videos Plataforma Akumaja 2026 (Docentes)</b><small>Lista de reproducción · YouTube</small></div>
+      </a>
+      <a class="video" href="https://www.youtube.com/watch?v=Ji3ntg89mHc" target="_blank" rel="noopener">
+        <span class="thumb" style="background-image:url('https://img.youtube.com/vi/Ji3ntg89mHc/mqdefault.jpg')"></span>
+        <div><b>Ingresar notas en el SMA</b><small>Cómo ingresar notas en el SMA, el nuevo sistema académico de la Universidad de La Guajira.</small></div>
+      </a>
+      <h3>Guías tutoriales</h3>
+      <p class="empty">Próximamente.</p>
+    </section>
+  </div>
+
+  <!-- Columna 2: calendario -->
+  <div class="col-cal">
+    <section id="calendario">
+      <h2>Calendario Académico</h2>
+      <p class="legend">Periodo 2026-2. Las filas se marcan automáticamente según la fecha de hoy.</p>
+      <div class="card"><div class="tscroll">
+        <table class="cal">
+          <thead><tr><th>Actividad</th><th>Desde</th><th>Hasta</th></tr></thead>
+          <tbody>
+            <tr class="group"><td colspan="3">Parciales pregrado</td></tr>
+            <tr data-s="2026-08-24" data-e="2026-08-29"><td>Primer parcial – Medicina y Enfermería</td><td class="d">24 ago 2026</td><td class="d">29 ago 2026</td></tr>
+            <tr data-s="2026-08-24" data-e="2026-09-03"><td>Ingreso de notas al SMA, primer parcial – Medicina y Enfermería</td><td class="d">24 ago 2026</td><td class="d">03 sep 2026</td></tr>
+            <tr data-s="2026-09-09" data-e="2026-09-15"><td>Primer parcial</td><td class="d">09 sep 2026</td><td class="d">15 sep 2026</td></tr>
+            <tr data-s="2026-09-09" data-e="2026-09-21"><td>Ingreso de notas al SMA, primer parcial</td><td class="d">09 sep 2026</td><td class="d">21 sep 2026</td></tr>
+            <tr data-s="2026-09-09" data-e="2026-09-29"><td>Reporte de novedad de notas extemporáneas, primer parcial</td><td class="d">09 sep 2026</td><td class="d">29 sep 2026</td></tr>
+            <tr data-s="2026-10-13" data-e="2026-10-19"><td>Segundo parcial – Medicina y Enfermería</td><td class="d">13 oct 2026</td><td class="d">19 oct 2026</td></tr>
+            <tr data-s="2026-10-14" data-e="2026-10-20"><td>Segundo parcial</td><td class="d">14 oct 2026</td><td class="d">20 oct 2026</td></tr>
+            <tr data-s="2026-10-14" data-e="2026-10-27"><td>Ingreso de notas al SMA, segundo parcial</td><td class="d">14 oct 2026</td><td class="d">27 oct 2026</td></tr>
+            <tr data-s="2026-10-14" data-e="2026-11-06"><td>Reporte de novedad de notas extemporáneas, segundo parcial</td><td class="d">14 oct 2026</td><td class="d">06 nov 2026</td></tr>
+            <tr data-s="2026-11-23" data-e="2026-11-28"><td>Examen final</td><td class="d">23 nov 2026</td><td class="d">28 nov 2026</td></tr>
+            <tr data-s="2026-11-23" data-e="2026-12-03"><td>Ingreso de notas al SMA, examen final</td><td class="d">23 nov 2026</td><td class="d">03 dic 2026</td></tr>
+            <tr data-s="2026-12-07" data-e="2026-12-09"><td>Solicitud de habilitaciones</td><td class="d">07 dic 2026</td><td class="d">09 dic 2026</td></tr>
+            <tr data-s="2026-12-07" data-e="2026-12-10"><td>Pago de habilitaciones</td><td class="d">07 dic 2026</td><td class="d">10 dic 2026</td></tr>
+            <tr data-s="2026-12-09" data-e="2026-12-14"><td>Registro de pagos de habilitaciones</td><td class="d">09 dic 2026</td><td class="d">14 dic 2026</td></tr>
+            <tr data-s="2026-12-15" data-e="2026-12-16"><td>Habilitaciones</td><td class="d">15 dic 2026</td><td class="d">16 dic 2026</td></tr>
+            <tr data-s="2026-12-15" data-e="2026-12-16"><td>Ingreso de notas al SMA, habilitaciones</td><td class="d">15 dic 2026</td><td class="d">16 dic 2026</td></tr>
+            <tr class="group"><td colspan="3">Programas tecnológicos</td></tr>
+            <tr data-s="2026-09-07" data-e="2026-12-05"><td>Ingreso de notas por modelos, según la programación del programa académico</td><td class="d">07 sep 2026</td><td class="d">05 dic 2026</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </section>
+
+    <section id="consejo">
+      <details open>
+        <summary>Calendario Consejo de Facultad</summary>
+        <div class="card"><div class="tscroll">
+          <table class="cal">
+            <thead><tr><th>Reunión del Consejo</th><th>Recepción de casos</th><th>Emisión del acta</th></tr></thead>
+            <tbody>
+              <tr data-s="2026-07-14" data-e="2026-09-01"><td class="d">27 ago 2026 <small>(Ordinario)</small></td><td>14 jul – 21 ago 2026</td><td class="d">01 sep 2026</td></tr>
+              <tr data-s="2026-08-22" data-e="2026-09-25"><td class="d">17 sep 2026 <small>(Extraordinario)</small></td><td>22 ago – 11 sep 2026</td><td class="d">25 sep 2026</td></tr>
+              <tr data-s="2026-09-12" data-e="2026-10-16"><td class="d">08 oct 2026 <small>(Ordinario)</small></td><td>12 sep – 02 oct 2026</td><td class="d">16 oct 2026</td></tr>
+              <tr data-s="2026-10-03" data-e="2026-11-06"><td class="d">29 oct 2026 <small>(Extraordinario)</small></td><td>03 oct – 23 oct 2026</td><td class="d">06 nov 2026</td></tr>
+              <tr data-s="2026-10-24" data-e="2026-11-27"><td class="d">19 nov 2026 <small>(Ordinario)</small></td><td>24 oct – 13 nov 2026</td><td class="d">27 nov 2026</td></tr>
+              <tr data-s="2026-11-14" data-e="2026-12-18"><td class="d">10 dic 2026 <small>(Extraordinario)</small></td><td>14 nov – 04 dic 2026</td><td class="d">18 dic 2026</td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </details>
+    </section>
+
+    <section id="comite">
+      <details open>
+        <summary>Calendario Comité de Investigación y Extensión</summary>
+        <div class="card"><div class="tscroll">
+          <table class="cal">
+            <thead><tr><th>Reunión del Comité</th><th>Fecha límite de recepción</th><th>Emisión del acta</th></tr></thead>
+            <tbody>
+              <tr data-s="2026-07-21" data-e="2026-08-09"><td class="d">03 ago 2026</td><td class="d">27 jul 2026</td><td class="d">09 ago 2026</td></tr>
+              <tr data-s="2026-08-04" data-e="2026-08-28"><td class="d">24 ago 2026</td><td class="d">18 ago 2026</td><td class="d">28 ago 2026</td></tr>
+              <tr data-s="2026-08-25" data-e="2026-09-11"><td class="d">07 sep 2026</td><td class="d">01 sep 2026</td><td class="d">11 sep 2026</td></tr>
+              <tr data-s="2026-09-08" data-e="2026-09-25"><td class="d">21 sep 2026</td><td class="d">15 sep 2026</td><td class="d">25 sep 2026</td></tr>
+              <tr data-s="2026-09-22" data-e="2026-10-26"><td class="d">19 oct 2026</td><td class="d">13 oct 2026</td><td class="d">26 oct 2026</td></tr>
+              <tr data-s="2026-10-20" data-e="2026-11-14"><td class="d">09 nov 2026</td><td class="d">03 nov 2026</td><td class="d">14 nov 2026</td></tr>
+              <tr data-s="2026-11-10" data-e="2026-11-28"><td class="d">23 nov 2026</td><td class="d">17 nov 2026</td><td class="d">28 nov 2026</td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </details>
+    </section>
+  </div>
+
+  <!-- Columna 3 -->
+  <section id="enlaces">
+    <h2>Enlaces Institucionales</h2>
+    <ul class="links">
+      <li><a href="https://gunig2.uniguajira.edu.co/ords/r/gunig_2/a100/login_desktop" target="_blank" rel="noopener">Gunig 2 <span>↗</span></a></li>
+      <li><a href="https://sma.uniguajira.edu.co/smaudg/" target="_blank" rel="noopener">SMA (Software de manejo avanzado) <span>↗</span></a></li>
+      <li><a href="https://uniguajira.edu.co/menu-de-akumaja/" target="_blank" rel="noopener">Plataforma Akumaja <span>↗</span></a></li>
+      <li><a href="https://gunig2.uniguajira.edu.co/ords/r/instrumentos_evaluacion/plan-de-aula/login" target="_blank" rel="noopener">Guía curricular y plan de aula <span>↗</span></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Programas en Energías · Facultad de Ingeniería · Universidad de La Guajira</span>
+    <span>Imagen de portada: Unsplash</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Fecha de hoy en Colombia (UTC-5), formato AAAA-MM-DD
+  var now = new Date(Date.now() - 5*3600*1000).toISOString().slice(0,10);
+  document.querySelectorAll('table.cal').forEach(function(t){
+    var nextMarked = false;
+    t.querySelectorAll('tr[data-s]').forEach(function(r){
+      var s = r.dataset.s, e = r.dataset.e, c = r.cells[0], tag = document.createElement('span');
+      if (now > e) { r.classList.add('done'); }
+      else if (now >= s) { r.classList.add('now'); tag.className='tag now'; tag.textContent='En curso'; c.appendChild(tag); }
+      else if (!nextMarked) { nextMarked = true; tag.className='tag next'; tag.textContent='Próximo'; c.appendChild(tag); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
