@@ -119,8 +119,7 @@ tbody tr:last-child td{border-bottom:none}
 td.d{white-space:nowrap}
 td small{color:var(--muted)}
 tr.group td{background:var(--surface-2);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--brand);padding-block:7px}
-tr.done td{color:var(--done)}
-tr.done td small{color:var(--done)}
+tr.done{display:none}
 tr.now td{background:var(--sun-soft)}
 tr.now td:first-child{box-shadow:inset 4px 0 0 var(--sun)}
 tr.next td:first-child{box-shadow:inset 4px 0 0 var(--brand-2)}
@@ -237,8 +236,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       <p class="legend">
         <span><i style="background:var(--sun)"></i>En curso</span>
         <span><i style="background:var(--brand-2)"></i>Próximo</span>
-        <span><i style="background:var(--done)"></i>Finalizado</span>
-        <span>Se actualiza solo con la fecha de hoy.</span>
+        <span>Las fechas que ya pasaron se ocultan solas.</span>
       </p>
       <div class="card"><div class="tscroll">
         <table class="cal" data-name="Calendario académico">
@@ -346,6 +344,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       }
       else if (!nextMarked) { nextMarked = true; r.classList.add('next'); tag.className='tag next'; tag.textContent='Próximo'; c.appendChild(tag); }
     });
+    // Ocultar los títulos de grupo que se quedaron sin actividades pendientes
+    t.querySelectorAll('tr.group').forEach(function(g){
+      var r = g.nextElementSibling, pending = false;
+      while (r && !r.classList.contains('group')) { if (!r.classList.contains('done')) pending = true; r = r.nextElementSibling; }
+      if (!pending) g.classList.add('done');
+    });
+    var body = t.tBodies[0];
+    if (!body.querySelector('tr:not(.done)')) {
+      body.insertAdjacentHTML('beforeend', '<tr><td colspan="' + t.rows[0].cells.length + '"><small>No quedan fechas pendientes.</small></td></tr>');
+    }
   });
 
   // Panel de portada: lo que está en curso, ordenado por lo que cierra primero
