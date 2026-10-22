@@ -83,7 +83,7 @@ nav.jump a:hover{background:var(--surface-2);color:var(--ink)}
 .col{display:grid;gap:36px;min-width:0}
 section{scroll-margin-top:64px;min-width:0}
 h2{font-family:var(--f-display);font-stretch:112%;font-weight:600;font-size:22px;letter-spacing:-.01em;margin:0 0 16px;display:flex;align-items:baseline;gap:10px}
-h2 .count{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0}
+h2 .count{white-space:nowrap;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0}
 h3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
 .stack{display:grid;gap:10px}
 
@@ -120,6 +120,13 @@ td.d{white-space:nowrap}
 td small{color:var(--muted)}
 tr.group td{background:var(--surface-2);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--brand);padding-block:7px}
 tr.done{display:none}
+.show-past tr.done{display:table-row}
+.show-past tr.done td,.show-past tr.done td small{color:var(--done)}
+.cal-title{flex-wrap:wrap;row-gap:8px}
+.show-past tr.empty{display:none}
+.past-toggle{margin-left:auto;font:600 12px var(--f-body);letter-spacing:0;color:var(--brand);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;white-space:nowrap}
+.past-toggle:hover{border-color:var(--brand)}
+.past-toggle[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
 tr.now td{background:var(--sun-soft)}
 tr.now td:first-child{box-shadow:inset 4px 0 0 var(--sun)}
 tr.next td:first-child{box-shadow:inset 4px 0 0 var(--brand-2)}
@@ -232,7 +239,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   <!-- Columna 2: calendario -->
   <div class="col col-cal">
     <section id="calendario">
-      <h2>Calendario Académico <span class="count">2026-2</span></h2>
+      <h2 class="cal-title">Calendario Académico <span class="count">2026-2</span><button type="button" class="past-toggle" id="past-toggle" aria-pressed="false">Ver fechas pasadas</button></h2>
       <p class="legend">
         <span><i style="background:var(--sun)"></i>En curso</span>
         <span><i style="background:var(--brand-2)"></i>Próximo</span>
@@ -352,8 +359,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     });
     var body = t.tBodies[0];
     if (!body.querySelector('tr:not(.done)')) {
-      body.insertAdjacentHTML('beforeend', '<tr><td colspan="' + t.rows[0].cells.length + '"><small>No quedan fechas pendientes.</small></td></tr>');
+      body.insertAdjacentHTML('beforeend', '<tr class="empty"><td colspan="' + t.rows[0].cells.length + '"><small>No quedan fechas pendientes.</small></td></tr>');
     }
+  });
+
+  // Botón para mostrar u ocultar las fechas que ya pasaron en todas las tablas
+  var toggle = document.getElementById('past-toggle'), cols = document.querySelector('.col-cal');
+  toggle.addEventListener('click', function(){
+    var on = cols.classList.toggle('show-past');
+    toggle.setAttribute('aria-pressed', on);
+    toggle.textContent = on ? 'Ocultar fechas pasadas' : 'Ver fechas pasadas';
   });
 
   // Panel de portada: lo que está en curso, ordenado por lo que cierra primero
