@@ -2,129 +2,181 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Docencia Programas en Energías · Uniguajira</title>
 <meta name="description" content="Formatos, tutoriales, calendario académico y enlaces institucionales para docentes de Ingeniería en Energías y Tecnología en Gestión de Energías Renovables – Universidad de La Guajira.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔌</text></svg>">
+<meta name="theme-color" content="#0b2f2a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='12' fill='%230b5d52'/><g stroke='%23f2b705' stroke-width='3.5' stroke-linecap='round' fill='none'><path d='M24 22V8'/><path d='M24 22l12 7'/><path d='M24 22l-12 7'/><path d='M24 24v17'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,700;100,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
+/* Layout: banda oscura de portada (foto de aerogeneradores) con el resumen "Ahora" del calendario;
+   debajo, tres columnas: recursos · calendario · enlaces. Paleta de La Guajira: mar turquesa, sal y sol. */
 :root{
-  --bg:#f6f4ef; --surface:#ffffff; --surface-2:#eef3f1;
-  --ink:#16231f; --muted:#5b6b66; --line:#dde3df;
-  --brand:#0f5b4f; --brand-2:#13806e; --accent:#e9821e; --accent-soft:#fdf0e2;
-  --done:#9aa7a2; --now:#e9821e; --next:#13806e;
-  --radius:14px; --shadow:0 1px 2px rgba(16,35,31,.06),0 6px 20px rgba(16,35,31,.06);
+  --bg:#f2f5f4; --surface:#ffffff; --surface-2:#e7eeec;
+  --ink:#0f1f1b; --muted:#53645e; --line:#d4dedb;
+  --brand:#0b5d52; --brand-2:#12806f;
+  --sun:#f2b705; --sun-ink:#8a5a00; --sun-soft:#fff3cc;
+  --done:#98a6a1;
+  --hero-ink:#f4f7f6; --hero-muted:#c9d6d2; --hero-glass:rgba(8,28,25,.62);
+  --radius:12px; --shadow:0 1px 2px rgba(11,40,35,.06),0 8px 24px -12px rgba(11,40,35,.18);
+  --f-display:Archivo,"Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0f1614; --surface:#16201d; --surface-2:#1b2824;
-    --ink:#e8efec; --muted:#9db0a9; --line:#26352f;
-    --brand:#6fd1bd; --brand-2:#4fb9a4; --accent:#f3a050; --accent-soft:#2a2118;
-    --done:#5d6d67; --shadow:none;
+    --bg:#0c1513; --surface:#13201d; --surface-2:#192a26;
+    --ink:#e6eeeb; --muted:#9cb0a9; --line:#243631;
+    --brand:#6fd3bf; --brand-2:#4dbba6;
+    --sun:#f5c43a; --sun-ink:#f5c43a; --sun-soft:#2b2410;
+    --done:#5f706a; --shadow:none;
+    color-scheme:dark;
   }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--brand-2);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.d,.mono{font-family:var(--f-mono);font-size:.92em;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 
-/* Hero */
-.hero{position:relative;height:300px;background:#7b8e8a url("https://images.unsplash.com/photo-1658242106760-7a5c8f177180?auto=format&fit=crop&w=2000&q=75") center 38%/cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,var(--bg) 100%)}
-.head{position:relative;margin-top:-92px;z-index:1}
-.badge{width:76px;height:76px;border-radius:20px;background:var(--surface);display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid var(--line)}
-.badge svg{width:44px;height:44px}
-h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(30px,5vw,48px);line-height:1.1;margin:18px 0 10px;letter-spacing:-.01em}
-.programs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
-.programs li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:500;color:var(--brand)}
-.uni{color:var(--muted);font-size:14px;margin:6px 0 0}
+/* Portada */
+.hero{position:relative;color:var(--hero-ink);background:#20302c url("https://images.unsplash.com/photo-1658242106760-7a5c8f177180?auto=format&fit=crop&w=2000&q=75") center 38%/cover;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(6,24,21,.92) 0%,rgba(6,24,21,.72) 45%,rgba(6,24,21,.25) 100%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:end;padding-block:72px 40px}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding-block:48px 32px}}
+.eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 18px;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.eyebrow svg{flex:none;width:30px;height:30px}
+h1{font-family:var(--f-display);font-stretch:112%;font-weight:700;font-size:clamp(32px,5.2vw,56px);line-height:1.02;letter-spacing:-.02em;margin:0 0 20px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--sun)}
+.programs{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.programs li{border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:500;background:rgba(255,255,255,.06)}
 
-nav.jump{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:28px}
-nav.jump .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px}
+/* Panel "Ahora" */
+.now-panel{background:var(--hero-glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:18px 20px}
+.now-panel header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;margin-bottom:10px}
+.now-panel h2{all:unset;font-family:var(--f-display);font-stretch:100%;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
+.now-panel .today{font-family:var(--f-mono);font-size:12.5px;color:var(--hero-muted)}
+.now-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.now-list li{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14.5px;line-height:1.35}
+.now-list li:first-child{border-top:none}
+.now-list small{display:block;color:var(--hero-muted);font-size:12px;margin-top:2px}
+.left{font-family:var(--f-mono);font-size:12.5px;white-space:nowrap;color:var(--hero-ink)}
+.left.urgent{color:var(--sun)}
+.now-panel a.all{display:inline-block;margin-top:10px;font-size:13.5px;font-weight:500;color:var(--hero-muted);text-underline-offset:3px}
+.now-panel a.all:hover{color:var(--hero-ink)}
+
+/* Navegación */
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.jump .wrap{display:flex;gap:2px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
 nav.jump a{white-space:nowrap;text-decoration:none;font-size:14px;font-weight:500;color:var(--muted);padding:6px 12px;border-radius:8px}
 nav.jump a:hover{background:var(--surface-2);color:var(--ink)}
 
-/* Layout */
-.grid{display:grid;grid-template-columns:1fr 1.35fr 0.9fr;gap:28px;padding-top:32px;padding-bottom:64px;align-items:start}
-@media (max-width:1000px){.grid{grid-template-columns:1fr 1fr}.col-cal{grid-column:1/-1;order:3}}
-@media (max-width:680px){.grid{grid-template-columns:1fr}}
-section{scroll-margin-top:64px}
-h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
-h3{font-size:15px;font-weight:600;margin:22px 0 10px;color:var(--brand)}
+/* Columnas */
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,.85fr);gap:36px;padding-block:40px 72px;align-items:start}
+@media (max-width:1000px){.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.col-cal{grid-column:1/-1;order:3}}
+@media (max-width:680px){.grid{grid-template-columns:minmax(0,1fr);gap:40px}}
+.col{display:grid;gap:36px;min-width:0}
+section{scroll-margin-top:64px;min-width:0}
+h2{font-family:var(--f-display);font-stretch:112%;font-weight:600;font-size:22px;letter-spacing:-.01em;margin:0 0 16px;display:flex;align-items:baseline;gap:10px}
+h2 .count{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0}
+h3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.stack{display:grid;gap:10px}
 
-/* Callout cards */
-.callout{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
-.callout:hover{transform:translateY(-1px);border-color:var(--brand-2)}
-.callout .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--accent-soft);display:grid;place-items:center;font-size:17px}
-.callout b{display:block;font-weight:600;line-height:1.35}
-.callout small{color:var(--muted);font-size:13px}
+/* Recursos (formatos) */
+.res{display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.res:hover{transform:translateY(-1px);border-color:var(--brand-2)}
+.res .ic{flex:none;width:38px;height:38px;border-radius:10px;background:var(--surface-2);color:var(--brand);display:grid;place-items:center}
+.res .ic svg{width:20px;height:20px}
+.res b{display:block;font-weight:600;line-height:1.35}
+.res small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 
-/* Video cards */
-.video{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;margin-bottom:10px;box-shadow:var(--shadow)}
+/* Videos */
+.video{display:grid;grid-template-columns:128px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;box-shadow:var(--shadow);transition:border-color .15s}
 .video:hover{border-color:var(--brand-2)}
-.thumb{flex:none;width:120px;min-height:84px;background:#1b1b1b center/cover;position:relative}
+.thumb{min-height:84px;background:#1b1b1b center/cover;position:relative}
 .thumb::after{content:"";position:absolute;inset:0;margin:auto;width:34px;height:24px;border-radius:7px;background:#e62117 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l8 5-8 5z' fill='white'/%3E%3C/svg%3E") center/18px no-repeat}
-.thumb.playlist{background:linear-gradient(135deg,var(--brand),var(--brand-2))}
-.video div{padding:10px 12px 10px 0}
+.thumb.playlist{background:linear-gradient(135deg,#0b5d52,#12806f)}
+.video div{padding:11px 14px}
 .video b{display:block;font-size:14.5px;line-height:1.3}
 .video small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
-.empty{color:var(--muted);font-size:14px;font-style:italic;padding:10px 0}
+.empty{color:var(--muted);font-size:14px;padding:12px 14px;border:1px dashed var(--line);border-radius:var(--radius);margin:0}
 
-/* Tables */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:8px}
+/* Tablas de calendario */
+.legend{font-size:13px;color:var(--muted);margin:-6px 0 14px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 .tscroll{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-thead th{background:var(--surface-2);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:var(--surface-2);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
 tbody tr:last-child td{border-bottom:none}
-td.d{white-space:nowrap;font-variant-numeric:tabular-nums}
-tr.group td{background:var(--surface-2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--brand)}
+td.d{white-space:nowrap}
+td small{color:var(--muted)}
+tr.group td{background:var(--surface-2);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--brand);padding-block:7px}
 tr.done td{color:var(--done)}
-tr.now td{background:var(--accent-soft)}
-tr.now td:first-child{box-shadow:inset 3px 0 0 var(--now)}
-.tag{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1px}
-.tag.now{background:var(--now);color:#fff}
-.tag.next{background:var(--next);color:#fff}
-.tag.done{border:1px solid var(--line);color:var(--done)}
-.legend{font-size:12.5px;color:var(--muted);margin:0 0 12px}
-details{margin-top:18px}
-details summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--brand);list-style:none;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+tr.done td small{color:var(--done)}
+tr.now td{background:var(--sun-soft)}
+tr.now td:first-child{box-shadow:inset 4px 0 0 var(--sun)}
+tr.next td:first-child{box-shadow:inset 4px 0 0 var(--brand-2)}
+.tag{display:inline-block;font-family:var(--f-body);font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+.tag.now{background:var(--sun);color:#2a1d00}
+.tag.next{background:var(--brand-2);color:#fff}
+details{margin:0}
+details summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+details summary h2{margin:0}
 details summary::-webkit-details-marker{display:none}
-details summary::before{content:"▸";transition:transform .15s;display:inline-block}
-details[open] summary::before{transform:rotate(90deg)}
-.note{font-size:12.5px;color:var(--muted);margin:6px 2px 0}
+details summary::before{content:"";flex:none;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-3px) rotate(-45deg);transition:transform .15s}
+details[open] summary::before{transform:translateY(-5px) rotate(45deg)}
 
-/* Links */
-.links{list-style:none;margin:0;padding:0}
-.links a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brand-2);border-radius:10px;text-decoration:none;font-weight:500;box-shadow:var(--shadow)}
-.links a:hover{border-color:var(--brand-2)}
-.links a span{color:var(--muted);font-size:18px;line-height:1}
+/* Enlaces */
+.links{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.links li+li{border-top:1px solid var(--line)}
+.links a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;text-decoration:none;transition:background .15s}
+.links a:hover{background:var(--surface-2)}
+.links b{display:block;font-weight:600}
+.links small{display:block;color:var(--muted);font-size:12.5px;margin-top:1px}
+.links svg{flex:none;width:16px;height:16px;color:var(--brand)}
 
-footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:13px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-block:22px 40px}
 </style>
 </head>
 <body>
 
-<div class="hero" role="img" aria-label="Aerogeneradores al atardecer"></div>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+          <path d="M24 21V6" stroke="#f2b705"/><path d="M24 21l13 7.5" stroke="#f2b705"/><path d="M24 21l-13 7.5" stroke="#f2b705"/>
+          <circle cx="24" cy="21" r="2.5" fill="#f2b705" stroke="none"/><path d="M24 25v18M18 43h12"/>
+        </svg>
+        Facultad de Ingeniería · Universidad de La Guajira
+      </p>
+      <h1>Docencia Programas en <em>Energías</em></h1>
+      <ul class="programs">
+        <li>Ingeniería en Energías</li>
+        <li>Tecnología en Gestión de Energías Renovables</li>
+      </ul>
+    </div>
 
-<header class="wrap head">
-  <div class="badge" aria-hidden="true">
-    <svg viewBox="0 0 48 48" fill="none" stroke="#e9821e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M17 6v10M31 6v10"/>
-      <path d="M11 16h26v8a13 13 0 0 1-26 0z" fill="#e9821e"/>
-      <path d="M24 37v5"/>
-    </svg>
+    <aside class="now-panel" aria-labelledby="ahora-t">
+      <header>
+        <h2 id="ahora-t">En curso</h2>
+        <span class="today" id="today">Periodo 2026-2</span>
+      </header>
+      <ul class="now-list" id="now-list">
+        <li><span>Consulta el calendario académico del periodo 2026-2.</span></li>
+      </ul>
+      <a class="all" href="#calendario">Ver calendario completo ↓</a>
+    </aside>
   </div>
-  <h1>Docencia Programas en Energías</h1>
-  <ul class="programs">
-    <li>Ingeniería en Energías</li>
-    <li>Tecnología en Gestión de Energías Renovables</li>
-  </ul>
-  <p class="uni">Facultad de Ingeniería · Universidad de La Guajira</p>
 </header>
 
 <nav class="jump" aria-label="Secciones">
@@ -141,46 +193,55 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 <main class="wrap grid">
 
   <!-- Columna 1 -->
-  <div>
+  <div class="col">
     <section id="formatos">
       <h2>Formatos</h2>
-      <a class="callout" href="https://drive.google.com/drive/folders/1M3N_N7RDkiglvs60BeMBjLa5nGl51T8A" target="_blank" rel="noopener">
-        <span class="ic">💡</span>
-        <span><b>Formatos de control de estudiante y desarrollo de clases</b><small>Carpeta en Google Drive</small></span>
-      </a>
-      <a class="callout" href="https://gunig2.uniguajira.edu.co/ords/f?p=136:6" target="_blank" rel="noopener">
-        <span class="ic">💡</span>
-        <span><b>Diapositivas y listados de asistencia actualizados</b><small>Gunig 2</small></span>
-      </a>
-      <a class="callout" href="https://docs.google.com/document/d/1nZ1tDCIRTJw4qQUMcbdROg4WEdG-S-12/edit" target="_blank" rel="noopener">
-        <span class="ic">💡</span>
-        <span><b>Membrete logo Universidad 50 Años</b><small>Documento de Google</small></span>
-      </a>
+      <div class="stack">
+        <a class="res" href="https://drive.google.com/drive/folders/1M3N_N7RDkiglvs60BeMBjLa5nGl51T8A" target="_blank" rel="noopener">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg></span>
+          <span><b>Formatos de control de estudiante y desarrollo de clases</b><small>Carpeta en Google Drive</small></span>
+        </a>
+        <a class="res" href="https://gunig2.uniguajira.edu.co/ords/f?p=136:6" target="_blank" rel="noopener">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8M7 12l3-3 2 2 4-4"/></svg></span>
+          <span><b>Diapositivas y listados de asistencia actualizados</b><small>Gunig 2</small></span>
+        </a>
+        <a class="res" href="https://docs.google.com/document/d/1nZ1tDCIRTJw4qQUMcbdROg4WEdG-S-12/edit" target="_blank" rel="noopener">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 7 21h10a1.5 1.5 0 0 0 1.5-1.5V7.5z"/><path d="M14 3v4.5h4.5M9 12h6M9 16h6"/></svg></span>
+          <span><b>Membrete logo Universidad 50 Años</b><small>Documento de Google</small></span>
+        </a>
+      </div>
     </section>
 
     <section id="tutoriales">
-      <h2 style="margin-top:28px">Tutoriales</h2>
-      <h3>Videos tutoriales</h3>
-      <a class="video" href="https://youtube.com/playlist?list=PLlWEmWAozJhleoloeyzFc8JFPPNyKk7WI" target="_blank" rel="noopener">
-        <span class="thumb playlist"></span>
-        <div><b>Videos Plataforma Akumaja 2026 (Docentes)</b><small>Lista de reproducción · YouTube</small></div>
-      </a>
-      <a class="video" href="https://www.youtube.com/watch?v=Ji3ntg89mHc" target="_blank" rel="noopener">
-        <span class="thumb" style="background-image:url('https://img.youtube.com/vi/Ji3ntg89mHc/mqdefault.jpg')"></span>
-        <div><b>Ingresar notas en el SMA</b><small>Cómo ingresar notas en el SMA, el nuevo sistema académico de la Universidad de La Guajira.</small></div>
-      </a>
-      <h3>Guías tutoriales</h3>
+      <h2>Tutoriales</h2>
+      <h3 style="margin-top:0">Videos</h3>
+      <div class="stack">
+        <a class="video" href="https://youtube.com/playlist?list=PLlWEmWAozJhleoloeyzFc8JFPPNyKk7WI" target="_blank" rel="noopener">
+          <span class="thumb playlist"></span>
+          <div><b>Videos Plataforma Akumaja 2026 (Docentes)</b><small>Lista de reproducción · YouTube</small></div>
+        </a>
+        <a class="video" href="https://www.youtube.com/watch?v=Ji3ntg89mHc" target="_blank" rel="noopener">
+          <span class="thumb" style="background-image:url('https://img.youtube.com/vi/Ji3ntg89mHc/mqdefault.jpg')"></span>
+          <div><b>Ingresar notas en el SMA</b><small>Cómo ingresar notas en el SMA, el nuevo sistema académico de la Universidad de La Guajira.</small></div>
+        </a>
+      </div>
+      <h3>Guías</h3>
       <p class="empty">Próximamente.</p>
     </section>
   </div>
 
   <!-- Columna 2: calendario -->
-  <div class="col-cal">
+  <div class="col col-cal">
     <section id="calendario">
-      <h2>Calendario Académico</h2>
-      <p class="legend">Periodo 2026-2. Las filas se marcan automáticamente según la fecha de hoy.</p>
+      <h2>Calendario Académico <span class="count">2026-2</span></h2>
+      <p class="legend">
+        <span><i style="background:var(--sun)"></i>En curso</span>
+        <span><i style="background:var(--brand-2)"></i>Próximo</span>
+        <span><i style="background:var(--done)"></i>Finalizado</span>
+        <span>Se actualiza solo con la fecha de hoy.</span>
+      </p>
       <div class="card"><div class="tscroll">
-        <table class="cal">
+        <table class="cal" data-name="Calendario académico">
           <thead><tr><th>Actividad</th><th>Desde</th><th>Hasta</th></tr></thead>
           <tbody>
             <tr class="group"><td colspan="3">Parciales pregrado</td></tr>
@@ -209,17 +270,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
     <section id="consejo">
       <details open>
-        <summary>Calendario Consejo de Facultad</summary>
+        <summary><h2>Consejo de Facultad</h2></summary>
         <div class="card"><div class="tscroll">
-          <table class="cal">
+          <table class="cal" data-name="Consejo de Facultad">
             <thead><tr><th>Reunión del Consejo</th><th>Recepción de casos</th><th>Emisión del acta</th></tr></thead>
             <tbody>
-              <tr data-s="2026-07-14" data-e="2026-09-01"><td class="d">27 ago 2026 <small>(Ordinario)</small></td><td>14 jul – 21 ago 2026</td><td class="d">01 sep 2026</td></tr>
-              <tr data-s="2026-08-22" data-e="2026-09-25"><td class="d">17 sep 2026 <small>(Extraordinario)</small></td><td>22 ago – 11 sep 2026</td><td class="d">25 sep 2026</td></tr>
-              <tr data-s="2026-09-12" data-e="2026-10-16"><td class="d">08 oct 2026 <small>(Ordinario)</small></td><td>12 sep – 02 oct 2026</td><td class="d">16 oct 2026</td></tr>
-              <tr data-s="2026-10-03" data-e="2026-11-06"><td class="d">29 oct 2026 <small>(Extraordinario)</small></td><td>03 oct – 23 oct 2026</td><td class="d">06 nov 2026</td></tr>
-              <tr data-s="2026-10-24" data-e="2026-11-27"><td class="d">19 nov 2026 <small>(Ordinario)</small></td><td>24 oct – 13 nov 2026</td><td class="d">27 nov 2026</td></tr>
-              <tr data-s="2026-11-14" data-e="2026-12-18"><td class="d">10 dic 2026 <small>(Extraordinario)</small></td><td>14 nov – 04 dic 2026</td><td class="d">18 dic 2026</td></tr>
+              <tr data-s="2026-07-14" data-e="2026-09-01"><td class="d">27 ago 2026 <small>(Ordinario)</small></td><td class="d">14 jul – 21 ago 2026</td><td class="d">01 sep 2026</td></tr>
+              <tr data-s="2026-08-22" data-e="2026-09-25"><td class="d">17 sep 2026 <small>(Extraordinario)</small></td><td class="d">22 ago – 11 sep 2026</td><td class="d">25 sep 2026</td></tr>
+              <tr data-s="2026-09-12" data-e="2026-10-16"><td class="d">08 oct 2026 <small>(Ordinario)</small></td><td class="d">12 sep – 02 oct 2026</td><td class="d">16 oct 2026</td></tr>
+              <tr data-s="2026-10-03" data-e="2026-11-06"><td class="d">29 oct 2026 <small>(Extraordinario)</small></td><td class="d">03 oct – 23 oct 2026</td><td class="d">06 nov 2026</td></tr>
+              <tr data-s="2026-10-24" data-e="2026-11-27"><td class="d">19 nov 2026 <small>(Ordinario)</small></td><td class="d">24 oct – 13 nov 2026</td><td class="d">27 nov 2026</td></tr>
+              <tr data-s="2026-11-14" data-e="2026-12-18"><td class="d">10 dic 2026 <small>(Extraordinario)</small></td><td class="d">14 nov – 04 dic 2026</td><td class="d">18 dic 2026</td></tr>
             </tbody>
           </table>
         </div></div>
@@ -228,9 +289,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
     <section id="comite">
       <details open>
-        <summary>Calendario Comité de Investigación y Extensión</summary>
+        <summary><h2>Comité de Investigación y Extensión</h2></summary>
         <div class="card"><div class="tscroll">
-          <table class="cal">
+          <table class="cal" data-name="Comité de Investigación">
             <thead><tr><th>Reunión del Comité</th><th>Fecha límite de recepción</th><th>Emisión del acta</th></tr></thead>
             <tbody>
               <tr data-s="2026-07-21" data-e="2026-08-09"><td class="d">03 ago 2026</td><td class="d">27 jul 2026</td><td class="d">09 ago 2026</td></tr>
@@ -251,10 +312,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <section id="enlaces">
     <h2>Enlaces Institucionales</h2>
     <ul class="links">
-      <li><a href="https://gunig2.uniguajira.edu.co/ords/r/gunig_2/a100/login_desktop" target="_blank" rel="noopener">Gunig 2 <span>↗</span></a></li>
-      <li><a href="https://sma.uniguajira.edu.co/smaudg/" target="_blank" rel="noopener">SMA (Software de manejo avanzado) <span>↗</span></a></li>
-      <li><a href="https://uniguajira.edu.co/menu-de-akumaja/" target="_blank" rel="noopener">Plataforma Akumaja <span>↗</span></a></li>
-      <li><a href="https://gunig2.uniguajira.edu.co/ords/r/instrumentos_evaluacion/plan-de-aula/login" target="_blank" rel="noopener">Guía curricular y plan de aula <span>↗</span></a></li>
+      <li><a href="https://gunig2.uniguajira.edu.co/ords/r/gunig_2/a100/login_desktop" target="_blank" rel="noopener"><span><b>Gunig 2</b><small>Sistema de gestión institucional</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></li>
+      <li><a href="https://sma.uniguajira.edu.co/smaudg/" target="_blank" rel="noopener"><span><b>SMA</b><small>Software de manejo avanzado</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></li>
+      <li><a href="https://uniguajira.edu.co/menu-de-akumaja/" target="_blank" rel="noopener"><span><b>Plataforma Akumaja</b><small>Aulas virtuales</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></li>
+      <li><a href="https://gunig2.uniguajira.edu.co/ords/r/instrumentos_evaluacion/plan-de-aula/login" target="_blank" rel="noopener"><span><b>Guía curricular y plan de aula</b><small>Instrumentos de evaluación</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></li>
     </ul>
   </section>
 
@@ -271,14 +332,37 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 (function(){
   // Fecha de hoy en Colombia (UTC-5), formato AAAA-MM-DD
   var now = new Date(Date.now() - 5*3600*1000).toISOString().slice(0,10);
+  var DAY = 864e5, current = [];
+  function days(a, b){ return Math.round((Date.parse(b) - Date.parse(a)) / DAY); }
+
   document.querySelectorAll('table.cal').forEach(function(t){
     var nextMarked = false;
     t.querySelectorAll('tr[data-s]').forEach(function(r){
       var s = r.dataset.s, e = r.dataset.e, c = r.cells[0], tag = document.createElement('span');
       if (now > e) { r.classList.add('done'); }
-      else if (now >= s) { r.classList.add('now'); tag.className='tag now'; tag.textContent='En curso'; c.appendChild(tag); }
-      else if (!nextMarked) { nextMarked = true; tag.className='tag next'; tag.textContent='Próximo'; c.appendChild(tag); }
+      else if (now >= s) {
+        r.classList.add('now'); tag.className='tag now'; tag.textContent='En curso'; c.appendChild(tag);
+        current.push({ text: c.firstChild.textContent.trim(), src: t.dataset.name, left: days(now, e), end: r.cells[r.cells.length-1].textContent.trim() });
+      }
+      else if (!nextMarked) { nextMarked = true; r.classList.add('next'); tag.className='tag next'; tag.textContent='Próximo'; c.appendChild(tag); }
     });
+  });
+
+  // Panel de portada: lo que está en curso, ordenado por lo que cierra primero
+  var fmt = new Intl.DateTimeFormat('es-CO', { weekday:'long', day:'numeric', month:'long', timeZone:'UTC' });
+  document.getElementById('today').textContent = 'Hoy, ' + fmt.format(new Date(now));
+  if (!current.length) return;
+  current.sort(function(a, b){ return a.left - b.left; });
+  var list = document.getElementById('now-list');
+  list.innerHTML = '';
+  current.slice(0, 4).forEach(function(it){
+    var li = document.createElement('li'), txt = document.createElement('span'), src = document.createElement('small'), left = document.createElement('span');
+    txt.textContent = it.src === 'Calendario académico' ? it.text : it.src + ' · reunión ' + it.text;
+    src.textContent = 'Hasta ' + it.end;
+    txt.appendChild(src);
+    left.className = 'left' + (it.left <= 3 ? ' urgent' : '');
+    left.textContent = it.left === 0 ? 'cierra hoy' : it.left === 1 ? 'queda 1 día' : 'quedan ' + it.left + ' días';
+    li.appendChild(txt); li.appendChild(left); list.appendChild(li);
   });
 })();
 </script>
